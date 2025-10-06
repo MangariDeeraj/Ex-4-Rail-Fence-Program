@@ -54,7 +54,7 @@ STEP-5: Read the characters row wise or column wise in the former order to get t
 ```
 # OUTPUT
 
-<img width="1865" height="739" alt="image" src="https://github.com/user-attachments/assets/45ccfa34-7374-4a29-abab-4171eef5d5af" />
+<img width="802" height="722" alt="image" src="https://github.com/user-attachments/assets/546cdf80-1bba-431d-8ba4-22853247d7ea" />
 
 
 # RESULT
