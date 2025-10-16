@@ -20,41 +20,68 @@ STEP-5: Read the characters row wise or column wise in the former order to get t
 
 # PROGRAM
 ```
- #include <stdio.h>
- #include <string.h>
- #include <ctype.h>
- void encryptRailFence(char *message, int rails) {
- int len = strlen(message);
- char rail[rails][len];
- memset(rail, '\n', sizeof(rail));
- int row = 0, direction = 1;
- for (int i = 0; i < len; i++) {
- rail[row][i] = message[i];
- row += direction;
- if (row == rails- 1 | row == 0)
- direction =-direction;
- }
- printf("Encrypted text: ");
- for (int i = 0; i < rails; i++)
- for (int j = 0; j < len; j++)
- if (rail[i][j] != '\n')
- printf("%c", rail[i][j]);
- printf("\n");
- }
- int main() {
- char message[100];
- int rails;
- printf("Enter a Secret Message: ");
- scanf("%s", message);
- printf("Enter number of rails: ");
- scanf("%d", &rails);
- encryptRailFence(message, rails);
- return 0;
- }
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int i, j, k, l;
+    char a[20], c[20], d[20];
+
+    printf("\n\t\tRAIL FENCE TECHNIQUE\n");
+
+    // Input string safely
+    printf("\nEnter the input string: ");
+    fgets(a, sizeof(a), stdin);
+
+    // Remove newline if present
+    a[strcspn(a, "\n")] = '\0';
+
+    l = strlen(a); // Length of string
+
+    // Encryption: first even indices, then odd
+    for (i = 0, j = 0; i < l; i++)
+    {
+        if (i % 2 == 0)
+        {
+            c[j++] = a[i];
+        }
+    }
+    for (i = 0; i < l; i++)
+    {
+        if (i % 2 == 1)
+        {
+            c[j++] = a[i];
+        }
+    }
+    c[j] = '\0'; // Null terminate
+
+    printf("\nCipher text after applying rail fence: %s\n", c);
+
+    // Decryption
+    if (l % 2 == 0)
+        k = l / 2;
+    else
+        k = (l / 2) + 1;
+
+    for (i = 0, j = 0; i < k; i++, j += 2)
+    {
+        d[j] = c[i];
+    }
+    for (i = k, j = 1; i < l; i++, j += 2)
+    {
+        d[j] = c[i];
+    }
+    d[l] = '\0';
+
+    printf("\nText after decryption: %s\n", d);
+
+    return 0;
+}
 ```
 # OUTPUT
 
-<img width="802" height="722" alt="image" src="https://github.com/user-attachments/assets/546cdf80-1bba-431d-8ba4-22853247d7ea" />
+<img width="627" height="405" alt="image" src="https://github.com/user-attachments/assets/f066cd40-6244-405f-bfe3-e9caaa596616" />
 
 
 # RESULT
